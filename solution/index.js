@@ -18,15 +18,9 @@ module.exports = class {
         this.val = [];
     }
 
-    keys() {
-        return this[Symbol.iterator];
-    }
-    values() {
-        return this[Symbol.iterator]
-    }
-    entries() {
-        return  this.value.map((e, i) => [e, e])[Symbol.iterator]();
-    }
+    keys = () =>  Object.values(this.value)[Symbol.iterator]();
+    values = () => Object.values(this.value)[Symbol.iterator]();
+    entries = () => this.value.map((item) => [item, item])[Symbol.iterator]();
 
     add(elem) {
         if(!this.has(elem))
@@ -44,18 +38,13 @@ module.exports = class {
         return this.value.includes(elem);
     }
 
-    forEach() {
-        return true;
-    }
+    forEach = (cb, args) => {
+        this.value.forEach(cb, args);
+      }
 
     [Symbol.iterator]() {
-        var index = -1;
-        var data  = this.val.sort((a,b) => a < b ? -1 : 1)
-    
-        return {
-          next: () => ({ value: data[++index], done: !(index in data) })
-        };
-    };
+        return this.value.values();
+    }
     
     [Symbol.toStringTag] = '^_^';
 

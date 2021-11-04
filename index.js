@@ -15,7 +15,7 @@ for (const item of set) {
 }
 
 // есть методы keys, values, entries
-for (const item of set.entries()) {
+for (const item of set.keys()) {
     console.log(item); // [ 4, 4 ] [ 8, 8 ] ...
 }
 
