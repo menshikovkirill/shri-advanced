@@ -29,7 +29,9 @@ module.exports = class {
     }
 
     add(elem) {
-        this.val = [...this.val, elem];
+        if(!this.has(elem))
+            this.val = [...this.val, elem];
+        
         return this;
     }
 
