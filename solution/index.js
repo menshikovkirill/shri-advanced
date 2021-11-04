@@ -30,13 +30,13 @@ module.exports = class {
 
     add(elem) {
         if(!this.has(elem))
-            this.val = [...this.val, elem];
+            this.value.push(elem);
         
         return this;
     }
 
     delete(elem) {
-        if(this.val.indexOf(elem) > -1)
+        if(this.has(elem))
             this.val.splice(this.val.indexOf(elem), 1)
     }
 
@@ -50,7 +50,7 @@ module.exports = class {
 
     [Symbol.iterator]() {
         var index = -1;
-        var data  = this.val;
+        var data  = this.val.sort((a,b) => a < b ? -1 : 1)
     
         return {
           next: () => ({ value: data[++index], done: !(index in data) })

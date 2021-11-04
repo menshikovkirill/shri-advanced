@@ -37,6 +37,7 @@ set.add(data);
 
 // который может работать в цепочке вызовов
 set.add(object).add(object).add(object);
+console.log([...set])
 
 // есть метод delete
 set.delete(data);
