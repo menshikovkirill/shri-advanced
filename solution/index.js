@@ -2,6 +2,7 @@ module.exports = class {
     get val() {
         return this.value;
     }
+
     set val(arr) {
         function onlyUnique(value, index, self) {
             return self.indexOf(value) === index;
@@ -27,22 +28,19 @@ module.exports = class {
         return  Array(this.size).fill().map((e, i) => [this.val[i], this.val[i]]);
     }
 
-    add(obj) {
-        let elem; 
+    // add(obj) {
+    //     let elem; 
 
-        if(obj.value)
-            elem = obj.value
-        else if("getValue" in obj)
-            elem = obj.getValue();
+    //     if(obj.value)
+    //         elem = obj.value
+    //     else if("getValue" in obj)
+    //         elem = obj.getValue();
 
-        this.val.push(elem);
+    //     this.val.push(elem);
 
-        return this;
-    }
+    //     return this;
+    // }
 
-    delete(val) {
-
-    }
     [Symbol.iterator]() {
         var index = -1;
         var data  = this.val;
