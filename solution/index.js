@@ -19,10 +19,10 @@ module.exports = class {
     }
 
     keys() {
-        return Object.values(this.value)[Symbol.iterator]();
+        return this[Symbol.iterator];
     }
     values() {
-        return Object.values(this.value)[Symbol.iterator]();
+        return this[Symbol.iterator]
     }
     entries() {
         return  this.value.map((e, i) => [e, e])[Symbol.iterator]();
