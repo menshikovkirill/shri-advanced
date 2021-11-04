@@ -34,7 +34,7 @@ module.exports = class {
         if(obj.value)
             elem = obj.value
         else if("getValue" in obj)
-            elem = obj.getValue();
+            elem = obj.getValue;
 
         this.val = [...this.val, elem];
 
@@ -61,6 +61,8 @@ module.exports = class {
           next: () => ({ value: data[++index], done: !(index in data) })
         };
     };
+    
+    [Symbol.toStringTag] = '^_^';
 
     constructor(arr) {
         console.log(arr);
