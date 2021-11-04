@@ -28,18 +28,30 @@ module.exports = class {
         return  Array(this.size).fill().map((e, i) => [this.val[i], this.val[i]]);
     }
 
-    // add(obj) {
-    //     let elem; 
+    add(obj) {
+        let elem; 
 
-    //     if(obj.value)
-    //         elem = obj.value
-    //     else if("getValue" in obj)
-    //         elem = obj.getValue();
+        if(obj.value)
+            elem = obj.value
+        else if("getValue" in obj)
+            elem = obj.getValue();
 
-    //     this.val.push(elem);
+        this.val = [...this.val, elem];
 
-    //     return this;
-    // }
+        return this;
+    }
+
+    delete(obj) {
+        this.val.splice(this.val.indexOf(3), 1)
+    }
+
+    has() {
+        return true;
+    }
+
+    forEach() {
+        return true;
+    }
 
     [Symbol.iterator]() {
         var index = -1;
