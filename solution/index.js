@@ -27,6 +27,18 @@ class MySet {
         return  Array(this.size).fill().map((e, i) => [this.val[i], this.val[i]]);
     }
 
+    add(obj) {
+        let elem; 
+
+        if(obj.value)
+            elem = obj.value
+        else if("getValue" in obj)
+            elem = obj.getValue();
+
+        this.val.push(elem);
+
+        return this;
+    }
     [Symbol.iterator]() {
         var index = -1;
         var data  = this.val;
@@ -67,21 +79,22 @@ for (const item of set.entries()) {
 set.clear();
 console.log(set.size); // 0
 
-// const object = {
-//     getValue () { return this.value }
-// }
+const object = {
+    getValue () { return this.value }
+}
 
-// const data = {
-//     value: 42
-// }
+const data = {
+    value: 42
+}
 
-// // есть метод add
-// set.add(object);
-// set.add(data);
+// есть метод add
+set.add(object);
+set.add(data);
 
-// // который может работать в цепочке вызовов
-// set.add(object).add(object).add(object);
+// который может работать в цепочке вызовов
+set.add(object).add(object).add(object);
 
+console.log([...set]);
 // // есть метод delete
 // set.delete(data);
 
