@@ -22,10 +22,10 @@ module.exports = class {
     values = () => Object.values(this.value)[Symbol.iterator]();
     entries = () => this.value.map((item) => [item, item])[Symbol.iterator]();
 
-    add(elem) {
+    add = (elem) => {
         if(!this.has(elem))
             this.value.push(elem);
-        
+    
         return this;
     }
 
