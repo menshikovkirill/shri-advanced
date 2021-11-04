@@ -1,4 +1,4 @@
-class MySet {
+module.exports = class {
     get val() {
         return this.value;
     }
@@ -39,6 +39,10 @@ class MySet {
 
         return this;
     }
+
+    delete(val) {
+
+    }
     [Symbol.iterator]() {
         var index = -1;
         var data  = this.val;
@@ -56,45 +60,46 @@ class MySet {
     }
 }
 
-// тесты
-const set = new MySet([4, 8, 15, 15, 16, 23, 42]);
+// // тесты
+// const set = new MySet([4, 8, 15, 15, 16, 23, 42]);
 
-// хранит только уникальные значения
-console.log([...set]); // [ 4, 8, 15, 16, 23, 42 ]
+// // хранит только уникальные значения
+// console.log([...set]); // [ 4, 8, 15, 16, 23, 42 ]
 
-// есть свойство size
-console.log(set.size); // 6
+// // есть свойство size
+// console.log(set.size); // 6
 
-// работает в цикле for-of
-for (const item of set) {
-    console.log(item); // 4 8 15 16 23 42
-}
+// // работает в цикле for-of
+// for (const item of set) {
+//     console.log(item); // 4 8 15 16 23 42
+// }
 
-// есть методы keys, values, entries
-for (const item of set.entries()) {
-    console.log(item); // [ 4, 4 ] [ 8, 8 ] ...
-}
+// // есть методы keys, values, entries
+// for (const item of set.entries()) {
+//     console.log(item); // [ 4, 4 ] [ 8, 8 ] ...
+// }
 
-// есть метод clear
-set.clear();
-console.log(set.size); // 0
+// // есть метод clear
+// set.clear();
+// console.log(set.size); // 0
 
-const object = {
-    getValue () { return this.value }
-}
+// const object = {
+//     getValue () { return this.value }
+// }
 
-const data = {
-    value: 42
-}
+// const data = {
+//     value: 42
+// }
 
-// есть метод add
-set.add(object);
-set.add(data);
+// // есть метод add
+// set.add(object);
+// set.add(data);
 
-// который может работать в цепочке вызовов
-set.add(object).add(object).add(object);
+// // который может работать в цепочке вызовов
+// set.add(object).add(object).add(object);
 
-console.log([...set]);
+// console.log([...set]);
+
 // // есть метод delete
 // set.delete(data);
 
