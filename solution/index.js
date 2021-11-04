@@ -19,34 +19,27 @@ module.exports = class {
     }
 
     keys() {
-        return Array(this.size).fill().map((e, i) => i);
+        return Object.values(this.value)[Symbol.iterator]();
     }
     values() {
-        return this.val;
+        return Object.values(this.value)[Symbol.iterator]();
     }
     entries() {
-        return  Array(this.size).fill().map((e, i) => [this.val[i], this.val[i]]);
+        return  this.value.map((e, i) => [e, e])[Symbol.iterator]();
     }
 
-    add(obj) {
-        let elem; 
-
-        if(obj.value)
-            elem = obj.value
-        else if("getValue" in obj)
-            elem = obj.getValue;
-
+    add(elem) {
         this.val = [...this.val, elem];
-
         return this;
     }
 
-    delete(obj) {
-        this.val.splice(this.val.indexOf(3), 1)
+    delete(elem) {
+        if(this.val.indexOf(elem) > -1)
+            this.val.splice(this.val.indexOf(elem), 1)
     }
 
-    has() {
-        return true;
+    has(elem) {
+        return this.value.includes(elem);
     }
 
     forEach() {
@@ -65,7 +58,6 @@ module.exports = class {
     [Symbol.toStringTag] = '^_^';
 
     constructor(arr) {
-        console.log(arr);
         this.val = arr;
 
         return this;

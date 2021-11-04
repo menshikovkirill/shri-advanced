@@ -1,70 +1,58 @@
 const MySet = require('./solution/index');
 
 
+// тесты
 const set = new MySet([4, 8, 15, 15, 16, 23, 42]);
 
-let data = {
-    value: 45
-};
+// хранит только уникальные значения
+console.log([...set]); // [ 4, 8, 15, 16, 23, 42 ]
 
-set.add(data).add({value: 34})
+// есть свойство size
+console.log(set.size); // 6
 
-console.log([...set])
+// работает в цикле for-of
+for (const item of set) {
+    console.log(item); // 4 8 15 16 23 42
+}
 
-// // хранит только уникальные значения
-// console.log([...set]); // [ 4, 8, 15, 16, 23, 42 ]
+// есть методы keys, values, entries
+for (const item of set.entries()) {
+    console.log(item); // [ 4, 4 ] [ 8, 8 ] ...
+}
 
-// // есть свойство size
-// console.log(set.size); // 6
+// есть метод clear
+set.clear();
+console.log(set.size); // 0
 
-// // работает в цикле for-of
-// for (const item of set) {
-//     console.log(item); // 4 8 15 16 23 42
-// }
+const object = {
+    getValue () { return this.value }
+}
 
-// // есть методы keys, values, entries
-// for (const item of set.entries()) {
-//     console.log(item); // [ 4, 4 ] [ 8, 8 ] ...
-// }
+const data = {
+    value: 42
+}
 
-// // есть метод clear
-// set.clear();
-// console.log(set.size); // 0
+// есть метод add
+set.add(object);
+set.add(data);
 
-// const object = {
-//     getValue () { return 34 }
-// }
+// который может работать в цепочке вызовов
+set.add(object).add(object).add(object);
 
-// const data = {
-//     value: 42
-// }
+// есть метод delete
+set.delete(data);
 
-// // есть метод add
-// set.add(object);
-// set.add(data);
+// есть метод has
+console.log(set.has({})); // false
+console.log(set.has(object)); // true
+console.log(set.has(data)); // false
 
-// // который может работать в цепочке вызовов
-// set.add(object).add(object).add(object);
+// и кое-что еще
+console.log(set === set.valueOf()) // true
+console.log(String(set)) // [object ^_^]
+console.log(Object.prototype.toString.call(set)) // [object ^_^]
 
-// set.add({value: 54}).add({value: 54})
-
-// console.log([...set]);
-
-// // есть метод delete
-// set.delete(data);
-// console.log([...set])
-
-// // есть метод has
-// console.log(set.has({})); // false
-// console.log(set.has(object)); // true
-// console.log(set.has(data)); // false
-
-// // и кое-что еще
-// console.log(set === set.valueOf()) // true
-// console.log(String(set)) // [object ^_^]
-// console.log(Object.prototype.toString.call(set)) // [object ^_^]
-
-// // есть forEach, который делает какие-то странные вещи...
-// set.forEach(function (item) {
-//     console.log(item.getValue.call(this)); // 42
-// }, data)
+// есть forEach, который делает какие-то странные вещи...
+set.forEach(function (item) {
+    console.log(item.getValue.call(this)); // 42
+}, data)
